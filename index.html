@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Barbour Shipping | Global Maritime Excellence</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #FFD700; /* Gold */
+            --dark-navy: #0A1128; /* Deep Navy */
+            --light-grey: #e0e0e0;
+            --glass-effect: rgba(255, 255, 255, 0.04);
+            --border-glow: rgba(255, 215, 0, 0.3);
+            --transition-fast: all 0.3s ease-in-out;
+            --transition-slow: all 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: var(--dark-navy);
+            color: var(--light-grey);
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        .animated-bg {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: radial-gradient(circle at 10% 20%, #1a2a4b 0%, transparent 50%),
+                        radial-gradient(circle at 90% 80%, #0d1a33 0%, #0A1128 100%);
+            z-index: -2;
+        }
+
+        nav {
+            position: fixed;
+            top: 0; width: 100%;
+            padding: 25px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: rgba(10, 17, 40, 0.9);
+            backdrop-filter: blur(25px);
+            border-bottom: 1px solid var(--border-glow);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 900;
+            letter-spacing: 4px;
+            color: var(--gold);
+            text-transform: uppercase;
+        }
+
+        .nav-links a {
+            color: var(--light-grey);
+            text-decoration: none;
+            margin-left: 40px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            position: relative;
+            transition: var(--transition-fast);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background-color: var(--gold);
+            left: 0;
+            bottom: -8px;
+            transition: var(--transition-fast);
+        }
+
+        .nav-links a:hover::after { width: 100%; }
+        .nav-links a:hover { color: var(--gold); }
+
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(to bottom, rgba(10, 17, 40, 0.8), rgba(10, 17, 40, 0.95)),
+                        url('https://images.unsplash.com/photo-1541888946-b6b3e51d2001?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            padding: 0 10%;
+            position: relative;
+            overflow: hidden;
+            animation: fadeIn 2s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero h1 {
+            font-size: clamp(3.5rem, 9vw, 7.5rem);
+            font-weight: 900;
+            margin-bottom: 25px;
+            text-shadow: 0 15px 40px rgba(0,0,0,0.6);
+            line-height: 0.9;
+            color: #ffffff;
+            animation: slideInUp 1.5s ease-out;
+        }
+
+        @keyframes slideInUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero p {
+            font-size: clamp(1rem, 2vw, 1.4rem);
+            max-width: 800px;
+            opacity: 0.7;
+            margin-top: 20px;
+            animation: slideInUp 1.8s ease-out;
+        }
+
+        .cta-button {
+            display: inline-block;
+            margin-top: 50px;
+            padding: 18px 50px;
+            background: var(--gold);
+            color: var(--dark-navy);
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition-slow);
+            box-shadow: 0 0 25px var(--gold);
+        }
+
+        .cta-button:hover {
+            background: var(--light-grey);
+            box-shadow: 0 0 40px var(--gold);
+            transform: translateY(-5px) scale(1.02);
+        }
+
+        .content-section { padding: 120px 5%; position: relative; }
+
+        .section-header { text-align: center; margin-bottom: 80px; }
+
+        .section-header h2 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 900;
+            color: #ffffff;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, var(--gold), #ffffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+        }
+
+        .grid-item {
+            background: var(--glass-effect);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 15px;
+            padding: 40px;
+            transition: var(--transition-slow);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+        }
+
+        .grid-item:hover {
+            transform: translateY(-15px);
+            border-color: var(--gold);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.5), 0 0 30px var(--border-glow);
+        }
+
+        .grid-item h3 { font-size: 1.8rem; color: var(--gold); margin-bottom: 15px; }
+
+        .legacy-section {
+            background: linear-gradient(to top, var(--dark-navy), #0A1128);
+            padding: 120px 5%;
+            text-align: center;
+        }
+
+        .quote-box {
+            max-width: 900px;
+            margin: auto;
+            background: var(--glass-effect);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 20px;
+            padding: 60px;
+            position: relative;
+        }
+
+        .quote-box p { font-size: clamp(1.1rem, 2vw, 1.6rem); font-style: italic; margin-bottom: 30px; }
+
+        .quote-box .author { font-weight: 700; color: var(--gold); font-size: 1.2rem; }
+
+        footer {
+            padding: 80px 5%;
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            opacity: 0.6;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hero h1 { font-size: 3.5rem; }
+            .grid-item { padding: 30px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="animated-bg"></div>
+
+    <nav>
+        <div class="logo">BARBOUR</div>
+        <div class="nav-links">
+            <a href="#">HOME</a>
+            <a href="#about">ABOUT US</a>
+            <a href="#fleet">OUR FLEET</a>
+            <a href="#services">SERVICES</a>
+            <a href="#contact">CONTACT</a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <p style="letter-spacing: 8px; font-weight: 300; color: var(--gold);">GLOBAL MARITIME LEADERS</p>
+        <h1>BARBOUR<br>SHIPPING</h1>
+        <p>Forging paths across oceans since 1965. We deliver beyond expectations, connecting the world with unparalleled precision and reliability.</p>
+        <a href="#services" class="cta-button">EXPLORE OUR SERVICES</a>
+    </header>
+
+    <section id="about" class="content-section">
+        <div class="section-header">
+            <h2>OUR LEGACY</h2>
+            <p>From humble beginnings in Arwad to a global shipping powerhouse, Captain Abdulrahman Barbour's vision continues to chart our course.</p>
+        </div>
+        <div class="grid-container">
+            <div class="grid-item">
+                <h3>Our Story</h3>
+                <p>A testament to resilience and unwavering commitment, Barbour Shipping was founded on principles of integrity and excellence, navigating the complex world of maritime logistics for decades.</p>
+            </div>
+            <div class="grid-item">
+                <h3>Our Vision</h3>
+                <p>To be the most trusted name in global shipping, pioneering sustainable practices and leveraging cutting-edge technology to offer superior service and unmatched efficiency.</p>
+            </div>
+            <div class="grid-item">
+                <h3>Our Values</h3>
+                <p>Safety, reliability, and customer satisfaction are at the core of everything we do. We build lasting relationships through transparency and dedication to our clients' success.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="fleet" class="content-section" style="background-color: rgba(10, 17, 40, 0.6);">
+        <div class="section-header">
+            <h2>THE BARBOUR FLEET</h2>
+            <p>Our modern fleet, led by the majestic M.V. MILITSA, is engineered for global reach and operational excellence.</p>
+        </div>
+        <div class="grid-container">
+            <div class="grid-item">
+                <h3>M.V. MILITSA</h3>
+                <p>The crown jewel of our fleet, M.V. MILITSA embodies our commitment to maritime excellence, featuring advanced engineering and the highest standards of international shipping.</p>
+            </div>
+            <div class="grid-item">
+                <h3>Cargo Capacity</h3>
+                <p>Specializing in bulk cargo, general freight, and project logistics, our vessel ensures your goods are transported safely and efficiently across any ocean.</p>
+            </div>
+            <div class="grid-item">
+                <h3>Advanced Navigation</h3>
+                <p>Equipped with state-of-the-art navigation and communication systems, M.V. MILITSA guarantees optimal routes and real-time tracking for peace of mind.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="content-section">
+        <div class="section-header">
+            <h2>OUR SERVICES</h2>
+            <p>Comprehensive maritime solutions designed to meet the dynamic demands of international trade and logistics.</p>
+        </div>
+        <div class="grid-container">
+            <div class="grid-item">
+                <h3>Global Freight Forwarding</h3>
+                <p>Seamless end-to-end solutions for your cargo, from port to final destination, across all major shipping lanes.</p>
+            </div>
+            <div class="grid-item">
+                <h3>Ship Management</h3>
+                <p>Expert technical management, crew management, and operational support to maximize vessel efficiency and safety.</p>
+            </div>
+            <div class="grid-item">
+                <h3>Port Agency</h3>
+                <p>Efficient port call management, customs clearance, and logistical support, ensuring smooth operations in any port.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="legacy-section">
+        <div class="quote-box">
+            <p>"Every nautical mile sailed carries the spirit of our journey. From a boy in Arwad to commanding a fleet, our story is etched in the waves."</p>
+            <div class="author">— Captain Abdulrahman Barbour</div>
+        </div>
+    </section>
+
+    <section id="contact" class="content-section" style="text-align: center;">
+        <h2 style="font-size: 3rem; color: var(--gold); margin-bottom: 20px;">CONNECT WITH US</h2>
+        <p style="font-size: 1.2rem; max-width: 600px; margin: auto; opacity: 0.8;">Ready to chart your next journey with Barbour Shipping? Contact our expert team today for unparalleled maritime solutions.</p>
+        <a href="mailto:info@barbourshipping.com" class="cta-button" style="margin-top: 40px;">GET A QUOTE</a>
+    </section>
+
+    <footer>
+        © 2026 BARBOUR SHIPPING. ALL RIGHTS RESERVED. POWERED BY THE NEXT GENERATION OF MARITIME VISIONARIES.
+    </footer>
+
+</body>
+</html>
