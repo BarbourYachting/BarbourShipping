@@ -153,17 +153,17 @@
             transform: translateY(-5px) scale(1.02);
         }
 
-        /* --- New Yachting Division Button Style --- */
-        .yachting-division-btn {
+        /* --- Global Division Button Style --- */
+        .division-btn {
             display: inline-block;
-            margin: 30px auto;
+            margin: 15px 10px;
             padding: 20px 45px;
             background: linear-gradient(45deg, #FFD700, #b8860b);
             color: #0A1128 !important;
             text-decoration: none;
             border-radius: 50px;
             font-weight: 900;
-            font-size: 1.1rem;
+            font-size: 1rem;
             letter-spacing: 2px;
             text-transform: uppercase;
             transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
@@ -173,7 +173,7 @@
             overflow: hidden;
         }
 
-        .yachting-division-btn:hover {
+        .division-btn:hover {
             transform: scale(1.05) translateY(-5px);
             box-shadow: 0 10px 40px rgba(255, 215, 0, 0.6);
             background: transparent;
@@ -181,7 +181,7 @@
             border-color: #FFD700;
         }
 
-        .yachting-division-btn::before {
+        .division-btn::before {
             content: '';
             position: absolute;
             top: 0; left: -100%;
@@ -190,7 +190,7 @@
             transition: 0.6s;
         }
 
-        .yachting-division-btn:hover::before {
+        .division-btn:hover::before {
             left: 100%;
         }
 
@@ -273,6 +273,7 @@
             .nav-links { display: none; }
             .hero h1 { font-size: 3.5rem; }
             .grid-item { padding: 30px; }
+            .division-btn { display: block; margin: 15px auto; }
         }
     </style>
 </head>
@@ -375,13 +376,19 @@
     </section>
 
     <section class="cta-container-v2">
-        <h2 style="color: #fff; margin-bottom: 10px; font-weight: 300; letter-spacing: 5px; font-size: 1rem;">PREMIUM SERVICES</h2>
+        <h2 style="color: #fff; margin-bottom: 10px; font-weight: 300; letter-spacing: 5px; font-size: 1rem;">PREMIUM DIVISIONS</h2>
         <h3 style="color: var(--gold); font-size: 2.5rem; margin-bottom: 30px; font-weight: 900;">BEYOND SHIPPING</h3>
-        <p style="max-width: 600px; margin: 0 auto 40px auto; opacity: 0.6;">Experience the pinnacle of luxury and maritime lifestyle through our specialized yachting division.</p>
-        <a href="https://barbouryachting.vercel.app/" target="_blank" class="yachting-division-btn">
-            Visit our Yachting Division →
+        <p style="max-width: 600px; margin: 0 auto 40px auto; opacity: 0.6;">Explore our specialized services in luxury yachting and world-class maritime engineering.</p>
+        
+        <a href="https://barbouryachting.vercel.app/" target="_blank" class="division-btn">
+            Yachting Division →
+        </a>
+
+        <a href="https://barbourdrydock.vercel.app/" target="_blank" class="division-btn">
+            Drydock & Engineering →
         </a>
     </section>
+
     <footer>
         © 2026 BARBOUR SHIPPING. ALL RIGHTS RESERVED. POWERED BY THE NEXT GENERATION OF MARITIME VISIONARIES.
     </footer>
