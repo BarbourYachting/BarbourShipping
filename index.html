@@ -24,9 +24,26 @@
             --transition-slow: all 0.7s cubic-bezier(0.23, 1, 0.32, 1);
         }
 
+        /* --- 1. تخصيص شريط التمرير الذهبي (Scrollbar) --- */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--dark-navy); }
+        ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #e6c200; }
+
         /* التحكم في الصفحات */
         .page { display: none; }
         .page.active { display: block; }
+
+        /* --- 2. تأثيرات الظهور التدريجي (Reveal) --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
 
         * {
             margin: 0;
@@ -53,6 +70,30 @@
             z-index: -2;
         }
 
+        /* --- 3. زر التواصل العائم (Floating Contact Button) --- */
+        .floating-contact {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: var(--gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--dark-navy);
+            text-decoration: none;
+            font-size: 1.5rem;
+            z-index: 999;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            transition: var(--transition-fast);
+        }
+        .floating-contact:hover {
+            transform: scale(1.1) rotate(15deg);
+            background: #ffffff;
+        }
+
         nav {
             position: fixed;
             top: 0; width: 100%;
@@ -67,7 +108,6 @@
             box-shadow: 0 5px 20px rgba(0,0,0,0.4);
         }
 
-        /* زر الثلاث نقاط/أسطر */
         .menu-toggle {
             cursor: pointer;
             display: flex;
@@ -82,7 +122,6 @@
             transition: 0.3s;
         }
 
-        /* القائمة الجانبية */
         .side-nav {
             position: fixed;
             top: 0; left: -100%;
@@ -111,7 +150,6 @@
             text-transform: uppercase;
         }
 
-        /* --- Hero Section --- */
         .hero {
             height: 100vh;
             display: flex;
@@ -274,7 +312,6 @@
         .quote-box p { font-size: clamp(1.1rem, 2vw, 1.6rem); font-style: italic; margin-bottom: 30px; }
         .quote-box .author { font-weight: 700; color: var(--gold); font-size: 1.2rem; }
 
-        /* --- تنسيق صفحة الصور الجديدة --- */
         .gallery-page-content { padding: 150px 5%; min-height: 100vh; text-align: center; }
         .gallery-grid-v2 {
             display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; margin-top: 50px;
@@ -301,12 +338,17 @@
             .hero h1 { font-size: 3.5rem; }
             .grid-item { padding: 30px; }
             .division-btn { display: block; margin: 15px auto; }
+            .floating-contact { bottom: 20px; right: 20px; width: 50px; height: 50px; }
         }
     </style>
 </head>
 <body>
 
     <div class="animated-bg"></div>
+
+    <a href="mailto:barbouryachting@gmail.com" class="floating-contact">
+        ✉
+    </a>
 
     <nav>
         <div class="menu-toggle" onclick="toggleMenu()">
@@ -330,7 +372,7 @@
             <button onclick="showPage('gallery')" class="cta-button">EXPLORE OPERATIONS GALLERY</button>
         </header>
 
-        <section id="about" class="content-section">
+        <section id="about" class="content-section reveal">
             <div class="section-header">
                 <h2>GLOBAL STANDARDS</h2>
                 <p>From strategic management to global logistics, we adhere to the highest international maritime regulations and safety protocols.</p>
@@ -357,7 +399,7 @@
             </div>
         </section>
 
-        <section id="fleet" class="content-section" style="background-color: rgba(10, 17, 40, 0.6);">
+        <section id="fleet" class="content-section reveal" style="background-color: rgba(10, 17, 40, 0.6);">
             <div class="section-header">
                 <h2>THE BARBOUR FLEET</h2>
                 <p>Our modern fleet, led by the majestic M.V. MILITSA, is engineered for operational excellence.</p>
@@ -378,14 +420,14 @@
             </div>
         </section>
 
-        <section class="legacy-section">
+        <section class="legacy-section reveal">
             <div class="quote-box">
                 <p>"Every nautical mile sailed carries the spirit of our journey. Our story of maritime leadership is etched in the waves."</p>
                 <div class="author">— Captain Abdulrahman Barbour</div>
             </div>
         </section>
 
-        <section class="cta-container-v2">
+        <section class="cta-container-v2 reveal">
             <h3 style="color: var(--gold); font-size: 2.5rem; margin-bottom: 30px; font-weight: 900;">BEYOND SHIPPING</h3>
             <a href="https://barbouryachting.vercel.app/" target="_blank" class="division-btn">Yachting Division →</a>
             <a href="https://barbourdrydock.vercel.app/" target="_blank" class="division-btn">Drydock & Engineering →</a>
@@ -396,11 +438,11 @@
 
     <div id="galleryPage" class="page">
         <div class="gallery-page-content">
-            <h2 style="font-size: 3.5rem; color: var(--gold); font-weight: 900; letter-spacing: 5px;">VESSEL OPERATIONS</h2>
-            <p style="opacity: 0.7; max-width: 700px; margin: 20px auto;">Exclusive look into our technical maintenance and global shipping logistics.</p>
+            <h2 class="reveal" style="font-size: 3.5rem; color: var(--gold); font-weight: 900; letter-spacing: 5px;">VESSEL OPERATIONS</h2>
+            <p class="reveal" style="opacity: 0.7; max-width: 700px; margin: 20px auto;">Exclusive look into our technical maintenance and global shipping logistics.</p>
             
             <div class="gallery-grid-v2">
-                <div class="photo-card">
+                <div class="photo-card reveal">
                     <img src="https://images.unsplash.com/photo-1577705998148-ebad19398b2c?q=80&w=800" alt="Maintenance">
                     <div class="photo-info">
                         <h4>Hull Engineering</h4>
@@ -408,7 +450,7 @@
                     </div>
                 </div>
 
-                <div class="photo-card">
+                <div class="photo-card reveal">
                     <img src="https://images.unsplash.com/photo-1494412519320-aa613dfb7738?q=80&w=800" alt="Fleet">
                     <div class="photo-info">
                         <h4>Fleet Management</h4>
@@ -416,7 +458,7 @@
                     </div>
                 </div>
 
-                <div class="photo-card">
+                <div class="photo-card reveal">
                     <img src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?q=80&w=800" alt="Repair">
                     <div class="photo-info">
                         <h4>Drydock Services</h4>
@@ -436,20 +478,37 @@
         }
 
         function showPage(pageId) {
-            // إغلاق المنيو
             document.getElementById('sideNav').classList.remove('active');
             
-            // إخفاء الكل وإظهار المطلوب
-            document.getElementById('homePage').style.display = 'none';
-            document.getElementById('galleryPage').style.display = 'none';
+            document.getElementById('homePage').classList.remove('active');
+            document.getElementById('galleryPage').classList.remove('active');
             
             if(pageId === 'home') {
-                document.getElementById('homePage').style.display = 'block';
+                document.getElementById('homePage').classList.add('active');
             } else {
-                document.getElementById('galleryPage').style.display = 'block';
+                document.getElementById('galleryPage').classList.add('active');
             }
             window.scrollTo(0, 0);
+            reveal(); // تحديث الحركات عند تغيير الصفحة
         }
+
+        // دالة تحريك العناصر عند السكرول
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 150;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                } else {
+                    reveals[i].classList.remove("active"); // اختياري: لإعادة الحركة عند الصعود
+                }
+            }
+        }
+
+        window.addEventListener("scroll", reveal);
+        window.onload = reveal;
     </script>
 </body>
 </html>
